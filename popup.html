@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScoutMind</title>
+  <link rel="stylesheet" href="ui/styles/main.css">
+</head>
+<body>
+  <div id="app">
+    <div id="split-pane">
+      <div id="config-panel" class="panel">
+        <div class="panel-header">
+          <h1 class="logo">ScoutMind</h1>
+          <button id="collapse-btn" class="icon-button" title="Collapse panel">◀</button>
+        </div>
+        <div class="panel-content">
+          <div class="url-form">
+            <div class="input-group">
+              <input type="url" id="url-input" placeholder="Enter website URL" required>
+              <button id="load-url-btn" class="primary-button">Go</button>
+            </div>
+          </div>
+          <div class="instruction-form">
+            <label for="instruction-input">What would you like to extract?</label>
+            <textarea id="instruction-input" placeholder="Describe what you want to extract in natural language..." rows="3"></textarea>
+            <div class="button-row">
+              <button id="extract-btn" class="primary-button" disabled>Extract Data</button>
+            </div>
+          </div>
+          <div id="status-container" class="status-container hidden">
+            <div id="status-indicator" class="status-indicator"></div>
+            <div id="status-message" class="status-message">Ready</div>
+          </div>
+        </div>
+      </div>
+      <div id="webview-panel" class="panel">
+        <div class="webview-container">
+          <iframe id="webview" sandbox="allow-same-origin allow-scripts allow-forms"></iframe>
+          <div id="highlight-overlay" class="highlight-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="ui/main.js"></script>
+</body>
+</html>

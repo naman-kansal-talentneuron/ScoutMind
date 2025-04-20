@@ -1,0 +1,265 @@
+/* ScoutMind Main Stylesheet */
+
+/* Base Styles */
+:root {
+    --primary-color: #4285F4;
+    --secondary-color: #34A853;
+    --error-color: #EA4335;
+    --warning-color: #FBBC05;
+    --text-color: #202124;
+    --text-secondary: #5F6368;
+    --background-color: #ffffff;
+    --panel-background: #f8f9fa;
+    --border-color: #dadce0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--background-color);
+  }
+  
+  #app {
+    width: 800px;
+    height: 600px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Split Pane Layout */
+  #split-pane {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .panel {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease;
+  }
+  
+  #config-panel {
+    width: 300px;
+    background-color: var(--panel-background);
+    border-right: 1px solid var(--border-color);
+  }
+  
+  #webview-panel {
+    flex: 1;
+    width: calc(100% - 300px);
+  }
+  
+  /* Panel Header */
+  .panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .logo {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--primary-color);
+  }
+  
+  /* Panel Content */
+  .panel-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+  }
+  
+  /* Buttons */
+  .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-secondary);
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  
+  .icon-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .primary-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .primary-button:hover {
+    background-color: #3367d6;
+  }
+  
+  .primary-button:disabled {
+    background-color: #c2c2c2;
+    cursor: not-allowed;
+  }
+  
+  /* Form Elements */
+  .input-group {
+    display: flex;
+    margin-bottom: 16px;
+  }
+  
+  .input-group input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px 0 0 4px;
+    outline: none;
+  }
+  
+  .input-group button {
+    border-radius: 0 4px 4px 0;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 80px;
+    outline: none;
+  }
+  
+  .button-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+  
+  /* URL Form */
+  .url-form {
+    margin-bottom: 24px;
+  }
+  
+  /* Instruction Form */
+  .instruction-form {
+    margin-bottom: 24px;
+  }
+  
+  /* Status Indicator */
+  .status-container {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.05);
+    margin-top: 24px;
+    transition: opacity 0.5s ease;
+  }
+  
+  .status-container.hidden {
+    display: none;
+  }
+  
+  .status-container.fading {
+    opacity: 0;
+  }
+  
+  .status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 12px;
+  }
+  
+  .status-indicator.ready {
+    background-color: var(--secondary-color);
+  }
+  
+  .status-indicator.loading {
+    background-color: var(--primary-color);
+    animation: pulse 1.5s infinite;
+  }
+  
+  .status-indicator.error {
+    background-color: var(--error-color);
+  }
+  
+  .status-message {
+    flex: 1;
+  }
+  
+  @keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+  
+  /* Webview */
+  .webview-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  #webview {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  /* Resize Handle */
+  .resize-handle {
+    position: absolute;
+    left: 299px;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    cursor: ew-resize;
+    background-color: transparent;
+    z-index: 10;
+  }
+  
+  .resize-handle:hover {
+    background-color: var(--primary-color);
+    opacity: 0.3;
+  }
+  
+  /* Collapsed Panel */
+  .collapsed {
+    width: 40px !important;
+  }
+  
+  .collapsed .panel-content,
+  .collapsed .logo {
+    display: none;
+  }
+  
+  .collapsed + #webview-panel {
+    width: calc(100% - 40px) !important;
+  }
+  
